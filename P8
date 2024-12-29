@@ -1,0 +1,35 @@
+Program 8: Create a Go program that uses interfaces to define a shape hierarchy (e.g., square, circle). Implement methods to calculate area and perimeter for each shape and demonstrate polymorphism
+
+package main
+import (
+"fmt"
+"math"
+)
+type Shape interface {
+area() float64
+perimeter() float64
+}
+type Square struct {
+side float64
+}
+func (s Square) area() float64 {
+return s.side * s.side
+}
+func (s Square) perimeter() float64 {
+return 4 * s.side
+}
+type Circle struct {
+radius float64
+}
+func (c Circle) area() float64 {
+return math.Pi * c.radius * c.radius
+}
+func (c Circle) perimeter() float64 {
+return 2 * math.Pi * c.radius
+}
+func main() {
+s := Square{side: 5}
+c := Circle{radius: 3}
+fmt.Printf("Square: Area = %.2f, Perimeter = %.2f\n", s.area(), s.perimeter())
+fmt.Printf("Circle: Area = %.2f, Perimeter = %.2f\n", c.area(), c.perimeter())
+}
